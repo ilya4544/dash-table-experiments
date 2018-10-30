@@ -1,6 +1,7 @@
 {
   "src/components/DataTable.react.js": {
     "description": "",
+    "displayName": "DataTable",
     "methods": [
       {
         "name": "propsToState",
@@ -197,6 +198,16 @@
         "required": false,
         "description": "Column widths (in pixels) of each column"
       },
+      "locked_columns": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "bool"
+          }
+        },
+        "required": false,
+        "description": "Column widths (in pixels) of each column"
+      },
       "columns": {
         "type": {
           "name": "arrayOf",
@@ -263,6 +274,31 @@
         },
         "required": false,
         "description": "Maximum number of of rows to display in the viewport.\nIf `max_rows_in_viewport` is 10, then if there are 15 rows,\nonly 10 will be displayed in the viewport but if there are 5 rows,\nthen the viewport will shrink to only show those 5 rows.\nThis takes precedence over `min_height`."
+      },
+      "over_scan": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "cols_start": {
+              "name": "number",
+              "required": false
+            },
+            "cols_end": {
+              "name": "number",
+              "required": false
+            },
+            "rows_start": {
+              "name": "number",
+              "required": false
+            },
+            "rows_end": {
+              "name": "number",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": ""
       },
       "row_height": {
         "type": {
@@ -361,6 +397,7 @@
   },
   "src/components/EditableTable.react.js": {
     "description": "",
+    "displayName": "EditableTable",
     "methods": [],
     "props": {
       "id": {
@@ -470,6 +507,7 @@
   },
   "src/components/VirtualizedTable.react.js": {
     "description": "",
+    "displayName": "VirtualizedTable",
     "methods": [
       {
         "name": "cellRenderer",

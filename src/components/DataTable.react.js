@@ -96,6 +96,12 @@ class DataTable extends Component {
             });
         }
 
+        if (props.locked_columns) {
+            newState.columns.forEach((c, i) => {
+                c.locked = Boolean(props.locked_columns[i]);
+            });
+        }
+
         this.setState(newState);
     }
 
@@ -286,7 +292,8 @@ class DataTable extends Component {
             row_scroll_timeout,
             row_selectable,
             sortable,
-            tab_index
+            tab_index,
+            over_scan,
         } = this.props;
 
         const {columns, selected_row_indices} = this.state;
@@ -380,6 +387,11 @@ DataTable.propTypes = {
     column_widths: PropTypes.arrayOf(PropTypes.number),
 
     /**
+     * Column widths (in pixels) of each column
+     */
+    locked_columns: PropTypes.arrayOf(PropTypes.bool),
+
+    /**
      * Order of columns. Note that the column names are specified in
      * `rows` but without order. This attribute allows you to specify
      * a custom order for your columns.
@@ -403,13 +415,13 @@ DataTable.propTypes = {
      * This takes precedence over `min_height`.
      */
     max_rows_in_viewport: PropTypes.number,
-    // TODO - over_scan
-    // over_scan: PropTypes.shape({
-    //     cols_start: PropTypes.number,
-    //     cols_end: PropTypes.number,
-    //     rows_start: PropTypes.number,
-    //     rows_end: PropTypes.number
-    // }),
+    
+    over_scan: PropTypes.shape({
+        cols_start: PropTypes.number,
+        cols_end: PropTypes.number,
+        rows_start: PropTypes.number,
+        rows_end: PropTypes.number
+    }),
     row_height: PropTypes.number,
     row_scroll_timeout: PropTypes.number,
     tab_index: PropTypes.number,
